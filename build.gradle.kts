@@ -14,6 +14,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.hibernate:hibernate-core:5.5.6.Final")
     implementation("org.mariadb.jdbc:mariadb-java-client:2.7.4")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    testImplementation("com.h2database:h2:2.2.224")
 }
 
 tasks.test {
