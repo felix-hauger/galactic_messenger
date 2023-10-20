@@ -1,10 +1,14 @@
 package org.galacticmessenger;
 
 
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-public class server {
+public class Server {
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private PrintWriter out;
@@ -12,7 +16,7 @@ public class server {
 
     public void start(int port) {
         try {
-            System.out.println("Starting server");
+            System.out.println("Starting Server");
             serverSocket = new ServerSocket(port);
             System.out.println("Socket created");
 
@@ -32,22 +36,22 @@ public class server {
             while (true) {
                 try {
                     String greeting = in.readLine();
-                    if ("hello server".equals(greeting)) {
-                        out.println("hello client");
+                    if ("hello Server".equals(greeting)) {
+                        out.println("hello Client");
 
                     }else if ("exit".equals(greeting)){
                         stop();
                         break;
                     }else {
 
-                        out.println("ta ecrit : " + greeting + ", c'est pas hello server ta vu");
+                        out.println("ta ecrit : " + greeting + ", c'est pas hello Server ta vu");
                     }
                 } catch (Exception e) {
                     System.out.println("Erreur: pas de message envoyé");
                 }
             }
         }catch (Exception e){
-            System.out.println("Erreur: Le server s'est arrété");
+            System.out.println("Erreur: Le Server s'est arrété");
         }
     }
 
@@ -60,7 +64,7 @@ public class server {
         serverSocket.close();
     }
     public static void main(String[] args) throws IOException {
-        server server=new server();
+        Server server=new Server();
         server.start(6666);
     }
 }
